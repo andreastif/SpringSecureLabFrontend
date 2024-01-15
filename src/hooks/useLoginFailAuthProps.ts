@@ -1,6 +1,6 @@
 import {useContext} from "react";
 import {AuthContext} from "../contexts/ApplicationContext.tsx";
-import {AppContextProps, LoginFailAuthProps} from "../types/types.ts";
+import {AppContextProps, LoginFailAuthProps} from "../types/PropTypes.ts";
 
 
 export function useLoginFailAuthProps() {

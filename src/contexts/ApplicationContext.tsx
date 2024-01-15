@@ -1,5 +1,5 @@
 import {createContext, ReactNode, useEffect, useState} from "react";
-import {AppContextProps} from "../types/types.ts";
+import {AppContextProps} from "../types/PropTypes.ts";
 
 interface ApplicationContextProviderProps {
     children: ReactNode;
@@ -22,10 +22,16 @@ export const ApplicationContextProvider: React.FC<ApplicationContextProviderProp
 
     const [modalIsClosed, setModalIsClosed] = useState(false);
 
-    const updateSessionExpiryTime = (expiryTimeMillis: number) => {
-        const expiryTime = new Date(expiryTimeMillis);
-        setSessionExpiryTime(expiryTime);
-        setSessionIsAboutToExpire(false);
+    const updateSessionExpiryTime = (expiryTimeMillis: number | null) => {
+
+        if (expiryTimeMillis !== null) {
+            const expiryTime = new Date(expiryTimeMillis);
+            setSessionExpiryTime(expiryTime);
+            setSessionIsAboutToExpire(false);
+        } else {
+            setSessionExpiryTime(null);
+        }
+
     }
 
     const contextValues: AppContextProps = {

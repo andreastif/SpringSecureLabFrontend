@@ -1,6 +1,6 @@
 import {useContext} from "react";
 import {AuthContext} from "../contexts/ApplicationContext.tsx";
-import {AppContextProps, LoginSuccessAuthProps} from "../types/types.ts";
+import {AppContextProps, LoginSuccessAuthProps} from "../types/PropTypes.ts";
 
 
 export function useLoginSuccessAuthProps() {

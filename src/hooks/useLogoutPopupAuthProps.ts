@@ -1,6 +1,6 @@
 import {useContext} from "react";
 import {AuthContext} from "../contexts/ApplicationContext.tsx";
-import {AppContextProps, LogoutPopupAuthProps} from "../types/types.ts";
+import {AppContextProps, LogoutPopupAuthProps} from "../types/PropTypes.ts";
 
 
 export function useLogoutPopupAuthProps() {

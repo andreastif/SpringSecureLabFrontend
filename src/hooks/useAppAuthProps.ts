@@ -1,6 +1,6 @@
 import {useContext} from "react";
 import {AuthContext} from "../contexts/ApplicationContext.tsx";
-import {AppAuthProps, AppContextProps} from "../types/types.ts";
+import {AppAuthProps, AppContextProps} from "../types/PropTypes.ts";
 
 
 export function useAppAuthProps() {

@@ -4,8 +4,7 @@ export interface LoginAuthProps {
     setLoginSuccess: (loggedIn: boolean) => void;
     setLoginFailed: (loggedIn: boolean) => void;
     setIsAdmin: (loggedIn: boolean) => void;
-    updateSessionExpiryTime: (expiryTimeMillis: number) => void;
-}
+    updateSessionExpiryTime: (expiryTimeMillis: number | null) => void;}
 
 export interface LoginFailAuthProps {
     loginFailed: boolean;
@@ -32,8 +31,7 @@ export interface ExpiryPopupAuthProps {
     setSessionIsAboutToExpire: (isAboutToExpire: boolean) => void;
     setLoginSuccess: (loggedIn: boolean) => void;
     sessionExpiryTime: Date | null;
-    updateSessionExpiryTime: (expiryTimeMillis: number) => void;
-
+    updateSessionExpiryTime: (expiryTimeMillis: number | null) => void;
 }
 
 export interface NavAuthProps {
@@ -67,14 +65,15 @@ export interface RegisterPageAuthProps {
 export interface AppAuthProps {
     isLoggedIn: boolean;
     setIsAdmin: (loggedIn: boolean) => void;
-    updateSessionExpiryTime: (expiryTimeMillis: number) => void;
+    updateSessionExpiryTime: (expiryTimeMillis: number | null) => void;
     sessionIsAboutToExpire: boolean;
     modalIsClosed: boolean;
     setModalIsClosed: (closed: boolean) => void;
+    setIsLoggedIn: (loggedIn: boolean) => void;
 
 }
 
 // Combined type for the context provider:
 export interface AppContextProps extends AppAuthProps, LoginAuthProps, LogoutPageAuthProps, LoginFailAuthProps, LoginSuccessAuthProps, LogoutPopupAuthProps, ExpiryPopupAuthProps, NavAuthProps, RegistrationAuthProps, RegistrationFailAuthProps, RegistrationSuccessAuthProps, RegisterPageAuthProps {
-    // This will include all properties from both LoginAuthProps and other props as needed.
+    // This will include all properties from both AppAuthProps and other props as needed.
 }

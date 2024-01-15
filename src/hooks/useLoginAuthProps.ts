@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import {AppContextProps, LoginAuthProps} from "../types/types.ts";
+import {AppContextProps, LoginAuthProps} from "../types/PropTypes.ts";
 import { AuthContext } from "../contexts/ApplicationContext.tsx";
 
 

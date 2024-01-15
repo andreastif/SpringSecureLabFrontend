@@ -1,6 +1,6 @@
 import {useContext} from "react";
 import {AuthContext} from "../contexts/ApplicationContext.tsx";
-import {AppContextProps, NavAuthProps} from "../types/types.ts";
+import {AppContextProps, NavAuthProps} from "../types/PropTypes.ts";
 
 
 export function useNavbarAuthProps() {

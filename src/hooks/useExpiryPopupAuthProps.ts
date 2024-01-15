@@ -1,6 +1,6 @@
 import {useContext} from "react";
 import {AuthContext} from "../contexts/ApplicationContext.tsx";
-import {AppContextProps, ExpiryPopupAuthProps} from "../types/types.ts";
+import {AppContextProps, ExpiryPopupAuthProps} from "../types/PropTypes.ts";
 
 export function useExpiryPopupAuthProps() {
     const context = useContext(AuthContext)

@@ -1,6 +1,6 @@
 import {useContext} from "react";
 import {AuthContext} from "../contexts/ApplicationContext.tsx";
-import {AppContextProps, RegistrationFailAuthProps} from "../types/types.ts";
+import {AppContextProps, RegistrationFailAuthProps} from "../types/PropTypes.ts";
 
 
 export function useRegistrationFailAuthProps() {

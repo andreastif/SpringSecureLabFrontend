@@ -15,9 +15,9 @@ export const get = async (endpoint: string, sendCredentials: boolean = true): Pr
     }
 }
 
-export const post = async (endpoint: string, sendCredentials: boolean = true): Promise<AxiosResponse> => {
+export const post = async (endpoint: string, data: any = null, sendCredentials: boolean = true): Promise<AxiosResponse> => {
     try {
-        return await backendAPIclient.post(`${endpoint}`, {withCredentials: sendCredentials})
+        return await backendAPIclient.post(`${endpoint}`, data, {withCredentials: sendCredentials})
     } catch (error) {
         throw new Error(`Call failed with error: ${error}`)
     }
