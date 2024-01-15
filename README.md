@@ -16,7 +16,7 @@ The application is built using VITE, React, and TypeScript, offering a robust an
 
 **Clone the Repository**:
 ```bash
-   git clone [frontend-repository-url]
+   git clone https://github.com/andreastif/SpringSecureLabFrontend.git
    ```
 **Install Dependencies:**
 ```bash
