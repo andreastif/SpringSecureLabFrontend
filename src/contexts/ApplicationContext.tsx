@@ -22,20 +22,21 @@ export const ApplicationContextProvider: React.FC<ApplicationContextProviderProp
 
     const [modalIsClosed, setModalIsClosed] = useState(false);
 
-
-
     const updateSessionExpiryTime = (expiryTimeMillis: number) => {
         const expiryTime = new Date(expiryTimeMillis);
         setSessionExpiryTime(expiryTime);
         setSessionIsAboutToExpire(false);
     }
 
-
     const contextValues: AppContextProps = {
         isLoggedIn,
         loginFailed,
         loginSuccess,
+        registrationFailed,
+        registrationComplete,
         sessionExpiryTime,
+        modalIsClosed,
+        sessionIsAboutToExpire,
         setIsLoggedIn,
         setIsAdmin,
         setLoginSuccess,
@@ -43,6 +44,8 @@ export const ApplicationContextProvider: React.FC<ApplicationContextProviderProp
         updateSessionExpiryTime,
         setSessionIsAboutToExpire,
         setModalIsClosed,
+        setRegistrationComplete,
+        setRegistrationFailed,
     }
 
     //prettier-ignore
