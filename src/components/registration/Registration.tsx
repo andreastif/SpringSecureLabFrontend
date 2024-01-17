@@ -137,9 +137,7 @@ export default function Registration() {
         setLastNameValid(validLastName);
         setUsernameValid(validUsername);
 
-        // Set the errorMessage depending on the checked variables
-        // setErrorMessage(!validPasswordSame || !validPasswordRegex || !validEmail || !validUsername || !validFirstName || !validLastName)
-
+        //sets the error message depending on below
         setInvalid(
             (form.username && !usernameValid) ||
             (form.firstname && !firstNameValid) ||
@@ -150,15 +148,25 @@ export default function Registration() {
             (form.password && !passwordRegex)
         );
 
+        // it's generally better to specify primitive values like strings, numbers, or booleans rather than objects or arrays.
+        // this is because an object is a non-primitive value (pointer vs actual).
+        // Objects (and arrays) are reference types. This means that even if an object's properties or an array's contents haven't changed,
+        // if you create a new object or array (for example, by spreading the previous one), it is considered a completely new value due to its new reference in memory.
+
     }, [
-        form,
+        form.confirmPassword,
+        form.username,
+        form.firstname,
+        form.lastname,
+        form.email,
+        form.password,
         usernameValid,
         firstNameValid,
         lastNameValid,
         emailValid,
         passwordValidated,
         passwordSame,
-    ]); //what it observes
+    ]);
 
     return (
         <>

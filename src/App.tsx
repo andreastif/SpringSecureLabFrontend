@@ -1,6 +1,6 @@
 import './App.css'
-import {get, post} from "./hooks/useAxios.ts";
-import {FormEvent, useEffect} from "react";
+import {get} from "./hooks/useAxios.ts";
+import { useEffect} from "react";
 import {useAppAuthProps} from "./hooks/useAppAuthProps.ts";
 import {STATUS_COOKIE} from "./types/CookieTypes.ts";
 import {Modal} from "react-bootstrap";
@@ -15,35 +15,6 @@ import Registration from "./components/registration/Registration.tsx";
 
 function App() {
     const props = useAppAuthProps();
-
-    const getCookies = async () => {
-        try {
-            await get("members/check-session");
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    const showCookies = () => {
-        const cookie = document.cookie.split(";");
-        console.log("TEST TEST TEST", cookie); // Removed concatenation to log the array properly
-    }
-
-    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-
-        const form = event.currentTarget;
-
-        const userData = {
-            username: (form.elements.namedItem("username") as HTMLInputElement).value,
-            password: (form.elements.namedItem("password") as HTMLInputElement).value,
-        }
-
-        console.log(userData);
-
-        post("members/login", userData, true)
-
-    }
 
     function extractStatusCookieValues(): STATUS_COOKIE {
         const cookies = document.cookie.split(';');
