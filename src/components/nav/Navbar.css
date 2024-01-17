@@ -1,5 +1,4 @@
 
-
 .vanta {
     position: relative; /* Establishes the container for absolute positioning */
     height: 60vh; /* Adjust if needed to take the full height of the viewport */
@@ -19,5 +18,4 @@
 
 .navbar-text-style {
     color: white !important;
-
 }

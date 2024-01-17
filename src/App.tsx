@@ -9,6 +9,7 @@ import Navbar from "./components/nav/Navbar.tsx";
 import {Route, Routes} from "react-router-dom";
 import LandingPage from "./components/landingpage/LandingPage.tsx";
 import GenericFailure from "./components/genericfailurepage/GenericFailure.tsx";
+import Registration from "./components/registration/Registration.tsx";
 
 
 function App() {
@@ -103,6 +104,7 @@ function App() {
             <Routes>
                 <Route path="*" element={<GenericFailure/>}/>
                 <Route path="/" element={<LandingPage/>}/>
+                <Route path="/register" element={<Registration/>}/>
             </Routes>
             <Modal
                 show={!props.modalIsClosed && props.sessionIsAboutToExpire}
