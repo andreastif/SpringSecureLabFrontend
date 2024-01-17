@@ -35,7 +35,7 @@ export default function Navbar() {
     }, [vantaEffect])
 
     return (
-        <div className="vanta" ref={vantaRef}>
+        <div className="vanta shadow" ref={vantaRef}>
             <Nav className="p-5">
                 {!props.isLoggedIn && (
                     <LinkContainer to="/login">

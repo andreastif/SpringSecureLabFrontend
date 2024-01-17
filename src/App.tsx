@@ -6,6 +6,7 @@ import {STATUS_COOKIE} from "./types/CookieTypes.ts";
 import {Modal} from "react-bootstrap";
 import ExpiryPopup from "./components/expirypopup/ExpiryPopup.tsx";
 import Navbar from "./components/nav/Navbar.tsx";
+import Footer from "./components/footer/Footer.tsx";
 import {Route, Routes} from "react-router-dom";
 import LandingPage from "./components/landingpage/LandingPage.tsx";
 import GenericFailure from "./components/genericfailurepage/GenericFailure.tsx";
@@ -28,7 +29,7 @@ function App() {
         console.log("TEST TEST TEST", cookie); // Removed concatenation to log the array properly
     }
 
-    const handleSubmit = (event: FormEvent<HTMLFormElement>)  => {
+    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
         const form = event.currentTarget;
@@ -64,14 +65,14 @@ function App() {
         }
 
         // Return a default object if STATUS_COOKIE is not found or cannot be parsed
-        return { isAdmin: false, isLoggedIn: false, expiryTimeMillis: Number(0) };
+        return {isAdmin: false, isLoggedIn: false, expiryTimeMillis: Number(0)};
     }
 
     const handleModalPopup = () => {
         props.setModalIsClosed(true);
     }
 
-    useEffect( () => {
+    useEffect(() => {
         const checkSession = async () => {
             try {
                 await get("members/check-session");
@@ -94,27 +95,31 @@ function App() {
 
         // disable eslint, calling checkSession on mount only
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[])
-
+    }, [])
 
 
     return (
         <>
-            <Navbar/>
-            <Routes>
-                <Route path="*" element={<GenericFailure/>}/>
-                <Route path="/" element={<LandingPage/>}/>
-                <Route path="/register" element={<Registration/>}/>
-            </Routes>
-            <Modal
-                show={!props.modalIsClosed && props.sessionIsAboutToExpire}
-                onHide={handleModalPopup}
-                onExited={handleModalPopup}
-            >
-                <Modal.Body>
-                    <ExpiryPopup />
-                </Modal.Body>
-            </Modal>
+            <div className="page-container">
+                <Navbar/>
+                <div className="content-wrap">
+                    <Routes>
+                        <Route path="*" element={<GenericFailure/>}/>
+                        <Route path="/" element={<LandingPage/>}/>
+                        <Route path="/register" element={<Registration/>}/>
+                    </Routes>
+                </div>
+                <Footer/>
+                <Modal
+                    show={!props.modalIsClosed && props.sessionIsAboutToExpire}
+                    onHide={handleModalPopup}
+                    onExited={handleModalPopup}
+                >
+                    <Modal.Body>
+                        <ExpiryPopup/>
+                    </Modal.Body>
+                </Modal>
+            </div>
         </>
     );
 

@@ -162,12 +162,10 @@ export default function Registration() {
 
     return (
         <>
-
             <Container
-                className="RegisterComponentContainer pb-5 "
+                className="RegisterComponentContainer pb-5 mt-5"
                 id="formRegisterContainer"
             >
-
                 <Form
                     onSubmit={handleSubmit}
                     id="formRegister"
