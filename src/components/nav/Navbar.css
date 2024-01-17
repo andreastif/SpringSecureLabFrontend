@@ -1,0 +1,23 @@
+
+
+.vanta {
+    position: relative; /* Establishes the container for absolute positioning */
+    height: 60vh; /* Adjust if needed to take the full height of the viewport */
+    /* Add other styles for .vanta as needed */
+    text-shadow: 2px 2px 2px black !important;
+}
+
+.nav-banner {
+    position: absolute; /* Positions nav-banner absolutely within .vanta */
+    top: 50%; /* Centers nav-banner vertically */
+    left: 10%; /* Positions nav-banner 20% from the left edge of .vanta */
+    transform: translateY(-50%); /* Ensures the nav-banner is centered on the y-axis */
+    /* Add other styles for .nav-banner as needed */
+    font-size: xxx-large;
+    color: white;
+}
+
+.navbar-text-style {
+    color: white !important;
+
+}

@@ -24,5 +24,5 @@ export const post = async (endpoint: string, data: any = null, sendCredentials: 
 }
 
 
-//Function Declaration
+//Function Declaration alternative
 //export async function getAxios(endpoint: string, sendCredentials: boolean): Promise<any> {}

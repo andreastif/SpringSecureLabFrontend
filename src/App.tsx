@@ -3,6 +3,12 @@ import {get, post} from "./hooks/useAxios.ts";
 import {FormEvent, useEffect} from "react";
 import {useAppAuthProps} from "./hooks/useAppAuthProps.ts";
 import {STATUS_COOKIE} from "./types/CookieTypes.ts";
+import {Modal} from "react-bootstrap";
+import ExpiryPopup from "./components/expirypopup/ExpiryPopup.tsx";
+import Navbar from "./components/nav/Navbar.tsx";
+import {Route, Routes} from "react-router-dom";
+import LandingPage from "./components/landingpage/LandingPage.tsx";
+import GenericFailure from "./components/genericfailurepage/GenericFailure.tsx";
 
 
 function App() {
@@ -60,6 +66,10 @@ function App() {
         return { isAdmin: false, isLoggedIn: false, expiryTimeMillis: Number(0) };
     }
 
+    const handleModalPopup = () => {
+        props.setModalIsClosed(true);
+    }
+
     useEffect( () => {
         const checkSession = async () => {
             try {
@@ -77,28 +87,32 @@ function App() {
             }
         }
 
+        // disable eslint; promise handling implemented above
+        // noinspection JSIgnoredPromiseFromCall
         checkSession();
 
+        // disable eslint, calling checkSession on mount only
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
 
 
     return (
         <>
-            <h1>Hello World</h1>
-            <form onSubmit= {handleSubmit}>
-                <div>
-                    <label htmlFor="username">Username:</label>
-                    <input type="text" id="username" name="username" />
-                </div>
-                <div>
-                    <label htmlFor="password">Password:</label>
-                    <input type="password" id="password" name="password" />
-                </div>
-                <button type="submit">Login</button>
-            </form>
-            <button onClick={getCookies}>click here</button>
-            <button onClick={showCookies}>print cookies here</button>
+            <Navbar/>
+            <Routes>
+                <Route path="*" element={<GenericFailure/>}/>
+                <Route path="/" element={<LandingPage/>}/>
+            </Routes>
+            <Modal
+                show={!props.modalIsClosed && props.sessionIsAboutToExpire}
+                onHide={handleModalPopup}
+                onExited={handleModalPopup}
+            >
+                <Modal.Body>
+                    <ExpiryPopup />
+                </Modal.Body>
+            </Modal>
         </>
     );
 

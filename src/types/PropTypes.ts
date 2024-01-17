@@ -38,7 +38,7 @@ export interface NavAuthProps {
     isLoggedIn: boolean;
 }
 
-export interface RegistrationAuthProps {
+export interface RegistrationAuthProps extends ErrorMessageAuthProps{
     isLoggedIn: boolean;
     setRegistrationComplete: (complete: boolean) => void;
     setRegistrationFailed: (failed: boolean) => void;
@@ -73,7 +73,12 @@ export interface AppAuthProps {
 
 }
 
+export interface ErrorMessageAuthProps {
+    errorMessage: string,
+    setErrorMessage: (error: string) => void;
+}
+
 // Combined type for the context provider:
-export interface AppContextProps extends AppAuthProps, LoginAuthProps, LogoutPageAuthProps, LoginFailAuthProps, LoginSuccessAuthProps, LogoutPopupAuthProps, ExpiryPopupAuthProps, NavAuthProps, RegistrationAuthProps, RegistrationFailAuthProps, RegistrationSuccessAuthProps, RegisterPageAuthProps {
+export interface AppContextProps extends AppAuthProps, LoginAuthProps, LogoutPageAuthProps, LoginFailAuthProps, LoginSuccessAuthProps, LogoutPopupAuthProps, ExpiryPopupAuthProps, NavAuthProps, RegistrationAuthProps, RegistrationFailAuthProps, RegistrationSuccessAuthProps, RegisterPageAuthProps, ErrorMessageAuthProps {
     // This will include all properties from both AppAuthProps and other props as needed.
 }
