@@ -14,7 +14,7 @@ import {ChangeEvent, FormEvent, useEffect, useState} from "react";
 import isEmail from "validator/lib/isEmail";
 
 import {useNavigate} from "react-router-dom";
-import {FormType} from "../../types/FormType.ts";
+import {RegistrationForm} from "../../types/RegistrationForm.ts";
 import {post} from "../../hooks/useAxios.ts";
 import {useRegistrationAuthProps} from "../../hooks/useRegistrationAuthProps.ts";
 
@@ -22,7 +22,7 @@ import {useRegistrationAuthProps} from "../../hooks/useRegistrationAuthProps.ts"
 export default function Registration() {
     const props = useRegistrationAuthProps();
 
-    const [form, setForm] = useState<FormType>({
+    const [form, setForm] = useState<RegistrationForm>({
         confirmPassword: "",
         email: "",
         firstname: "",
@@ -47,8 +47,6 @@ export default function Registration() {
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        console.log(form);
-
         const userData = {
             username: form.username,
             email: form.email,
@@ -59,30 +57,32 @@ export default function Registration() {
         }
 
         try {
-            const res = await post("members/login", userData);
+            const res = await post("members", userData);
             if (res.status === 201) {
                 props.setRegistrationComplete(true);
                 props.setRegistrationFailed(false);
                 navigate("/register/success")
+
+                //reset form if successful
+                setForm({
+                    confirmPassword: "",
+                    email: "",
+                    firstname: "",
+                    lastname: "",
+                    password: "",
+                    username: ""
+                });
+
             } else {
                 props.setRegistrationComplete(false);
                 props.setRegistrationFailed(true);
-                navigate("/register/failure")
+                navigate("/register/fail")
             }
         } catch (err: any) {
             props.setErrorMessage(err.toString())
-            navigate("/*")
+            navigate("/register/fail")
         }
 
-        //reset form
-        setForm({
-            confirmPassword: "",
-            email: "",
-            firstname: "",
-            lastname: "",
-            password: "",
-            username: ""
-        })
     }
 
     const handleFormChange = (e: ChangeEvent<HTMLInputElement>): void => {
@@ -154,12 +154,12 @@ export default function Registration() {
         // if you create a new object or array (for example, by spreading the previous one), it is considered a completely new value due to its new reference in memory.
 
     }, [
-        form.confirmPassword,
-        form.username,
         form.firstname,
         form.lastname,
+        form.username,
         form.email,
         form.password,
+        form.confirmPassword,
         usernameValid,
         firstNameValid,
         lastNameValid,
@@ -171,7 +171,7 @@ export default function Registration() {
     return (
         <>
             <Container
-                className="RegisterComponentContainer pb-5 mt-5"
+                className="RegisterComponentContainer pb-5 mb-5 mt-5"
                 id="formRegisterContainer"
             >
                 <Form
@@ -205,6 +205,7 @@ export default function Registration() {
                         <Form.Control
                             className="custom-placeholder border-end rounded-end"
                             name="username"
+                            value={form.username}
                             onChange={handleFormChange}
                             placeholder="Username"
                             aria-label="Username"
@@ -235,6 +236,7 @@ export default function Registration() {
                             <Form.Control
                                 className={`custom-placeholder me-3 border-end rounded-end`}
                                 name="firstname"
+                                value={form.firstname}
                                 onChange={handleFormChange}
                                 placeholder="First name"
                                 aria-label="First name"
@@ -245,6 +247,7 @@ export default function Registration() {
                             <Form.Control
                                 className={`custom-placeholder border-end rounded-end`}
                                 name="lastname"
+                                value={form.lastname}
                                 onChange={handleFormChange}
                                 placeholder="Last name"
                                 aria-label="Last name"
@@ -285,6 +288,7 @@ export default function Registration() {
                         <Form.Control
                             className="custom-placeholder border-end rounded-end"
                             name="email"
+                            value={form.email}
                             onChange={handleFormChange}
                             placeholder="Email@gmail.com"
                             aria-label="Email address"
@@ -314,6 +318,7 @@ export default function Registration() {
                             className={`custom-placeholder`}
                             type={isPasswordVisible ? "text" : "password"}
                             name="password"
+                            value={form.password}
                             onChange={handleFormChange}
                             placeholder="Password"
                             aria-label="Password"
@@ -332,8 +337,9 @@ export default function Registration() {
                         <Form.Control
                             className={`custom-placeholder`}
                             type={isConfirmPasswordVisible ? "text" : "password"}
-                            onChange={handleFormChange}
                             name="confirmPassword"
+                            value={form.confirmPassword}
+                            onChange={handleFormChange}
                             placeholder="Confirm Password"
                             aria-label="Password"
                         />

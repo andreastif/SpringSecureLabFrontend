@@ -1,0 +1,66 @@
+.LoginContainer {
+    padding-top: 20px;
+}
+
+.LoginContainer #formLoginContainer {
+    height: 50vh; /* Use the full height of the viewport */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+.LoginContainer #formLogin {
+    width: 90%; /* It will take 90% of the parent container's width */
+    max-width: 650px; /* It will not stretch more than 500px */
+    margin: 2rem auto; /* This will keep the form centered and add space on top and bottom */
+    padding: 1rem; /* This adds padding inside the container */
+    box-sizing: border-box; /* This makes sure padding does not affect the final width */
+}
+
+.LoginContainer #formGroupLoginWelcome {
+    margin-bottom: 1rem;
+    font-size: 20px;
+}
+
+.LoginContainer #loginGroupCredentials {
+    font-style: italic;
+}
+
+.LoginContainer .winter-green-btn {
+    background-color: rgba(84, 119, 83, 0.75) !important;
+    border-color: rgba(83, 119, 117, 0.75) !important;
+}
+
+/* If you also want to change the hover state of the button */
+.LoginContainer .winter-green-btn:hover {
+    background-color: #8abd90 !important;
+    border-color: #8abd90 !important;
+}
+
+.LoginContainer .custom-placeholder::placeholder {
+    font-style: italic;
+    font-size: 12px;
+}
+
+/* DO NOT ADD PADDING OR MARGIN, WILL CREATE RENDERING TEARS ON FORM*/
+.invalid-feedback {
+    display: block;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* ADJUST PADDING AND OR MARGIN HERE IF YOU WANT TO ADJUST THE SPACING WHEN ERROR IS SHOWN */
+.error-message {
+    font-size: 0.875rem; /* Smaller font size for error messages */
+    color: #dc3545;
+    margin: 0 !important;
+    padding-top: 1rem;
+}
+
+/* DO NOT ADD PADDING OR MARGIN, WILL CREATE RENDERING TEARS ON FORM*/
+.error-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 !important;
+    padding: 0 !important;
+}

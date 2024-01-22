@@ -1,5 +1,5 @@
 
-export type FormType = {
+export type RegistrationForm = {
     email: string,
     password: string,
     confirmPassword: string,

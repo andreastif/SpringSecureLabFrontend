@@ -1,6 +1,6 @@
 import './App.css'
 import {get} from "./hooks/useAxios.ts";
-import { useEffect} from "react";
+import {useEffect} from "react";
 import {useAppAuthProps} from "./hooks/useAppAuthProps.ts";
 import {STATUS_COOKIE} from "./types/CookieTypes.ts";
 import {Modal} from "react-bootstrap";
@@ -11,6 +11,12 @@ import {Route, Routes} from "react-router-dom";
 import LandingPage from "./components/landingpage/LandingPage.tsx";
 import GenericFailure from "./components/genericfailurepage/GenericFailure.tsx";
 import Registration from "./components/registration/Registration.tsx";
+import RegistrationPage from "./components/registrationpage/RegistrationPage.tsx";
+import RegistrationFail from "./components/registrationfail/RegistrationFail.tsx";
+import RegistrationSuccess from "./components/registrationsuccess/RegistrationSuccess.tsx";
+import LoginPage from "./components/loginpage/LoginPage.tsx";
+import LoginSuccess from "./components/loginsuccess/LoginSuccess.tsx";
+import LoginFail from "./components/loginfail/LoginFail.tsx";
 
 
 function App() {
@@ -77,7 +83,29 @@ function App() {
                     <Routes>
                         <Route path="*" element={<GenericFailure/>}/>
                         <Route path="/" element={<LandingPage/>}/>
-                        <Route path="/register" element={<Registration/>}/>
+
+                        <Route path="/register" element={<RegistrationPage/>}>
+                            <Route path="success"
+                                   element={<RegistrationSuccess/>}
+                            />
+                            <Route path="fail"
+                                   element={<RegistrationFail/>}
+                            />
+                        </Route>
+
+                        <Route path="/login"
+                               element={<LoginPage/>}
+                        >
+                            <Route
+                                path="success"
+                                element={<LoginSuccess/>}
+                            />
+                            <Route
+                                path="fail"
+                                element={<LoginFail/>}
+                            />
+                        </Route>
+
                     </Routes>
                 </div>
                 <Footer/>
