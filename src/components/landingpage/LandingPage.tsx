@@ -1,19 +1,15 @@
-import {Container} from "react-bootstrap";
+import { Container } from "react-bootstrap";
 
 export default function LandingPage() {
-
-    return (
-        <>
-            <Container className="m-4">
-                <h1 className="h1">Lorem Bacon</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam atque aut consequuntur corporis, culpa earum est explicabo, illum labore odit perspiciatis quaerat sapiente veniam. Alias facilis hic laudantium non quos.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam atque aut consequuntur corporis, culpa earum est explicabo, illum labore odit perspiciatis quaerat sapiente veniam. Alias facilis hic laudantium non quos.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam atque aut consequuntur corporis, culpa earum est explicabo, illum labore odit perspiciatis quaerat sapiente veniam. Alias facilis hic laudantium non quos.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam atque aut consequuntur corporis, culpa earum est explicabo, illum labore odit perspiciatis quaerat sapiente veniam. Alias facilis hic laudantium non quos.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam atque aut consequuntur corporis, culpa earum est explicabo, illum labore odit perspiciatis quaerat sapiente veniam. Alias facilis hic laudantium non quos.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam atque aut consequuntur corporis, culpa earum est explicabo, illum labore odit perspiciatis quaerat sapiente veniam. Alias facilis hic laudantium non quos.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam atque aut consequuntur corporis, culpa earum est explicabo, illum labore odit perspiciatis quaerat sapiente veniam. Alias facilis hic laudantium non quos.</p>
-            </Container>
-        </>
-    )
+  return (
+    <>
+      <Container className="m-4">
+        <h1 className="h1 ">Welcome</h1>
+        <p>This is a React, Typescript and Java Spring Boot project.</p>
+        <p>
+          You'll find the backend of the application, <a href="https://github.com/andreastif/SpringSecureLab">here</a>.
+        </p>
+      </Container>
+    </>
+  );
 }

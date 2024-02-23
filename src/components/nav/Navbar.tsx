@@ -6,9 +6,6 @@ import {Nav} from "react-bootstrap";
 import {LinkContainer} from "react-router-bootstrap"
 
 
-
-
-
 export default function Navbar() {
 
     const props = useNavbarAuthProps();
